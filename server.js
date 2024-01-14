@@ -63,7 +63,7 @@ let books = [
   },
 ];
 
-app.get("/")
+
 
 app.get("/user", (req, res) => {
   let obj = {
@@ -87,3 +87,27 @@ app.get("/books/:id", (req, res) => {
   const { id } = req.params;
   res.json(books.find((book) => book.id == id));
 });
+
+app.post("/books" , (req ,res) => {
+  const {newUser: bookData}  = req.body;
+  console.log("bookData => " , req.body)
+  
+  books = [ ...books , {...req.body , id: books.length + 1}];
+  let response = {
+    statusCode: 200,
+    message: "User added successfully :)",
+    data: bookData
+  }
+  res.json(response);
+
+})
+
+app.post("user/:id", (req , res) => {
+  const {id} = req.params;
+  const {user: editUser}  = req.body;
+
+  users = users.map((user) => user.id === id ? editUser : user);
+  res.json(users.find((user) => user.id === id));
+
+
+})

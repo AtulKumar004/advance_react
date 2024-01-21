@@ -7,10 +7,11 @@ import BookInfo from "./component/Section3/book-info";
 import ResourceLoader from "./component/Section3/resourceLoader";
 import logProps from "./component/section5_HOC/lopProps";
 import HOC from "./component/section5_HOC";
+import { ErrorBoundary } from "./component/errorBoundry";
 
 function App() {
   return (
-    <>
+    <ErrorBoundary>
       <HOC />
       {/* <UserLoader userId={1}>
         <UserInfo />
@@ -21,7 +22,7 @@ function App() {
       <UserLoader userId={3}>
         <UserInfo />
       </UserLoader> */}
-    </>
+    </ErrorBoundary>
   );
 }
 

@@ -15,7 +15,7 @@ const addUser = (Component) => {
         .get("/books")
         .then((res) => {
             console.log("user => " , res?.data )
-          setAllUserData(res?.data);
+          setAllUserData(res.data);
         })
         .catch((err) => {
           console.log(err);
